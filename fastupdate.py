@@ -3,30 +3,24 @@
 import sys, os
 
 FASTBOOT = "fastboot "
-#images = {'boot': '/reposi/project/softap/M9615R2011/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9615.img',
-#          'aboot': "/reposi/project/softap/M9615R2011/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/appsboot.mbn",
-#          'userdata': '/reposi/project/softap/M9615R2011/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-usr-image.usrfs.yaffs2',
-#          'system': "/reposi/project/softap/M9615R2011/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-image-9615-cdp.yaffs2"
-#          }
-images = {'boot': '/reposi/project/softap/M9615R2020/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9615.img',
-          'aboot': "/reposi/project/softap/M9615R2020/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/appsboot.mbn",
-          'userdata': '/reposi/project/softap/M9615R2020/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-usr-image.usrfs.yaffs2',
-          'system': "/reposi/project/softap/M9615R2020/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-image-9615-cdp.yaffs2",
-          'recovery': "/reposi/project/softap/M9615R2020/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/recovery-boot-oe-msm9615.img",
-          'recoveryfs': "/reposi/project/softap/M9615R2020/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-recovery-image-9615-cdp.yaffs2",
-          'dsp1': "/reposi/project/softap/M9615R2020/modem_proc/build/ms/bin/ACETWMAZ/dsp1.mbn",
-          'dsp2': "/reposi/project/softap/M9615R2020/modem_proc/build/ms/bin/ACETWMAZ/dsp2.mbn",
-          'dsp3': "/reposi/project/softap/M9615R2020/lpass_proc/obj/qdsp6v4_ReleaseG/dsp3.mbn"
-          }
+WORKBASE = "/reposi/project/softap/M9615R2020/"
 
-#images = {'boot': '/home/ibkim/nsserver/M9615R2010/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9615.img',
-#          'aboot': "/home/ibkim/nsserver/M9615R2010/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/appsboot.mbn",
-#          'userdata': '/home/ibkim/nsserver/M9615R2010/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-usr-image.usrfs.yaffs2',
-#          'system': "/home/ibkim/nsserver/M9615R2010/apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-image-9615-cdp.yaffs2"
-#          }
+images = {'boot': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9615.img",
+          'aboot': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/appsboot.mbn",
+          'userdata': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-usr-image.usrfs.yaffs2",
+          'system': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-image-9615-cdp.yaffs2",
+          'recovery': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/recovery-boot-oe-msm9615.img",
+          'recoveryfs': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-recovery-image-9615-cdp.yaffs2",
+          'dsp1': WORKBASE + "modem_proc/build/ms/bin/ACETWMAZ/dsp1.mbn",
+          'dsp2': WORKBASE + "modem_proc/build/ms/bin/ACETWMAZ/dsp2.mbn",
+          'dsp3': WORKBASE + "lpass_proc/obj/qdsp6v4_ReleaseG/dsp3.mbn"
+          }
 
 if len(sys.argv) <= 1:
     print "You must give a parameter like boot, aboot, userdata, system"
+    print "Usage: "
+    print sys.argv[0] + " boot aboot userdata"
+    print sys.argv[0] + " all"
     exit(1)
 
 keys = sys.argv[1:]
