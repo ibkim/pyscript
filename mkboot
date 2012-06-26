@@ -25,8 +25,6 @@ MKBOOTIMG += "console=ttyHSL0,115200,n8 androidboot.hardware=qcom\"  --base 0x40
 MKBOOTIMG += "--ramdisk_offset " + kernelsize
 MKBOOTIMG += " --output ./boot-oe-msm9615.img"
 
-print MKBOOTIMG
-
 if os.access(kernelimage, False) == False:
     print "Compiled kernel image does not exist."
     exit(1)
