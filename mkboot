@@ -1,0 +1,42 @@
+#!/usr/bin/python
+
+import sys, os
+
+FASTUPDATE = "fastupdate.py "
+WORKBASE = "/reposi/project/softap/M9615R2020/apps_proc/"
+BOOTIMG = WORKBASE+"oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9615.img"
+
+kernelmap = WORKBASE + "kernel/System.map"
+
+awkcmd = 'awk --non-decimal-data \'/ _end/ {end="0x" $1} /_stext/ {beg="0x" $1} END {size1=end-beg+4096; size=and(size1,compl(4095)); printf("%#x",size)}\' ' + kernelmap
+
+if os.access(kernelmap, False) == False:
+    print "Kernel map file does not exist."
+    exit(1)
+
+pipe = os.popen(awkcmd)
+kernelsize = pipe.read(1024)
+
+kernelimage = WORKBASE + "kernel/arch/arm/boot/Image"
+
+MKBOOTIMG = "mkbootimg --kernel " + kernelimage + " "
+MKBOOTIMG += "--ramdisk /dev/null --cmdline \"noinitrd root=/dev/mtdblock14 rw rootfstype=yaffs2 "
+MKBOOTIMG += "console=ttyHSL0,115200,n8 androidboot.hardware=qcom\"  --base 0x40800000 "
+MKBOOTIMG += "--ramdisk_offset " + kernelsize
+MKBOOTIMG += " --output ./boot-oe-msm9615.img"
+
+print MKBOOTIMG
+
+if os.access(kernelimage, False) == False:
+    print "Compiled kernel image does not exist."
+    exit(1)
+else:
+    os.system(MKBOOTIMG)
+
+if os.access(BOOTIMG, False) == False:
+    print "Deploy Image does not exist. I don't care deploy image"
+else:
+    os.system("cp -f ./boot-oe-msm9615.img " + BOOTIMG)
+
+
+exit(0)
