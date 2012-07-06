@@ -23,6 +23,8 @@ if len(sys.argv) <= 1:
     print sys.argv[0] + " all"
     exit(1)
 
+print "Your working base dir is " + WORKBASE
+
 keys = sys.argv[1:]
 
 if keys[0] == "all":
