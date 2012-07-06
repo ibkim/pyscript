@@ -8,6 +8,8 @@ BOOTIMG = WORKBASE+"oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9
 
 kernelmap = WORKBASE + "kernel/System.map"
 
+print "Your bootimage " + BOOTIMG
+
 awkcmd = 'awk --non-decimal-data \'/ _end/ {end="0x" $1} /_stext/ {beg="0x" $1} END {size1=end-beg+4096; size=and(size1,compl(4095)); printf("%#x",size)}\' ' + kernelmap
 
 if os.access(kernelmap, False) == False:
