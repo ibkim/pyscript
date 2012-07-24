@@ -3,7 +3,7 @@
 import sys, os
 
 FASTBOOT = "fastboot "
-WORKBASE = "/reposi/project/softap/M9615R2020/"
+WORKBASE = "/home/ibkim/project/softap/M9615R2020/"
 
 images = {'boot': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9615.img",
           'aboot': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/appsboot.mbn",
@@ -13,7 +13,8 @@ images = {'boot': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9
           'recoveryfs': WORKBASE + "apps_proc/oe-core/build/tmp-eglibc/deploy/images/9615-cdp/9615-cdp-recovery-image-9615-cdp.yaffs2",
           'dsp1': WORKBASE + "modem_proc/build/ms/bin/ACETWMAZ/dsp1.mbn",
           'dsp2': WORKBASE + "modem_proc/build/ms/bin/ACETWMAZ/dsp2.mbn",
-          'dsp3': WORKBASE + "lpass_proc/obj/qdsp6v4_ReleaseG/dsp3.mbn"
+          'dsp3': WORKBASE + "lpass_proc/obj/qdsp6v4_ReleaseG/dsp3.mbn",
+          'sbl2': WORKBASE + "boot_images/build/ms/bin/ACETRMAZ/sbl2.mbn"
           }
 
 if len(sys.argv) <= 1:

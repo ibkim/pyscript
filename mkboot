@@ -3,7 +3,7 @@
 import sys, os
 
 FASTUPDATE = "fastupdate.py "
-WORKBASE = "/reposi/project/softap/M9615R2020/apps_proc/"
+WORKBASE = "/home/ibkim/project/softap/M9615R2020/apps_proc/"
 BOOTIMG = WORKBASE+"oe-core/build/tmp-eglibc/deploy/images/9615-cdp/boot-oe-msm9615.img"
 
 kernelmap = WORKBASE + "kernel/System.map"
